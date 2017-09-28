@@ -31,7 +31,7 @@ function preppendHttp(url) {
 
 function openTab(urlToOpen) {
   "use strict";
-  if (urlToOpen.indexOf('http') == -1 && urlToOpen.indexOf('popup.html') == -1) {
+  if (urlToOpen.indexOf('http') == -1 && urlToOpen.indexOf('mangahere') != -1) {
     urlToOpen = 'https:' + urlToOpen;
   }
   chrome.runtime.sendMessage({
