@@ -407,6 +407,7 @@ function getSimilarMangaTitles(mg) {
     }
     return res;
 }
+
 function readManga(request, callback, doSave) {
     var mangaExist = isInMangaList(request.url);
     if (mangaExist == null) {
@@ -1736,6 +1737,14 @@ function saveList() {
     } catch (e) {}
 
 }
+
+function filterMangaHere(url) {
+  if (url.indexOf('http') == -1) {
+    return 'https:' + url;
+  }
+  return url;
+}
+
 function refreshTag() {
     var nbNews = 0;
     var listDone = [];
@@ -1750,7 +1759,7 @@ function refreshTag() {
                 }
             }
             if (!found || getParameters().groupmgs == 0) {
-                var lastName = mangaList[i].listChaps[0][1];
+                var lastName = filterMangaHere(mangaList[i].listChaps[0][1]);
                 if (lastName != mangaList[i].lastChapterReadURL && mangaList[i].read == 0) {
                     listDone[listDone.length] = shortName;
                     nbNews++;
