@@ -33,7 +33,7 @@ Array.prototype.remove = function (from, to) {
   return this.push.apply(this, rest);
 };
 
-function preppendHttp(url) {
+function filterMangaHere(url) {
   if (url.indexOf('http') == -1) {
     return 'https:' + url;
   }
@@ -51,7 +51,7 @@ function MangaElt(obj) {
   if (obj.listChaps) {
     this.listChaps = JSON.parse(obj.listChaps)
     for (var i = 0; i < this.listChaps.length; i += 1) {
-      this.listChaps[i][1] = preppendHttp(this.listChaps[i][1])
+      this.listChaps[i][1] = filterMangaHere(this.listChaps[i][1])
     }
   }
   this.read = obj.read || 0;
@@ -175,6 +175,7 @@ function MangaElt(obj) {
                 notification;
               obj.listChaps = lst;
               newLastChap = obj.listChaps[0][1];
+              oldLastChap = oldLastChap == undefined ? oldLastChap : oldLastChap
               // if oldLastChap === undefined --> new manga added --> no notifications (Issue #40)
               if ((newLastChap !== oldLastChap) && (oldLastChap !== undefined)) {
                 if (obj.read === 0 && (parameters.shownotifications === 1)) {

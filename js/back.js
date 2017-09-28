@@ -50,7 +50,7 @@ function removeBanner() {
   });
 }
 
-function preppendHttp(url) {
+function filterMangaHere(url) {
   if (url.indexOf('http') == -1) {
     return 'https:' + url;
   }
@@ -80,8 +80,8 @@ function initPage() {
         }
 
         getMirrorScript().getInformationsFromCurrentPage(document, window.location.href, function(res) {
-          res.currentChapterURL = preppendHttp(res.currentChapterURL);
-          res.currentMangaURL = preppendHttp(res.currentMangaURL);
+          res.currentChapterURL = filterMangaHere(res.currentChapterURL);
+          res.currentMangaURL = filterMangaHere(res.currentMangaURL);
           jQuery.data(document.body, "curpageinformations", res);
           //console.log(res);
           //console.log(jQuery.data(document.body, "curpageinformations"));
@@ -977,7 +977,6 @@ function onErrorImage() {
       //== loadImage
       $(imgSave).data("urlToLoad", $(this).data("urlToLoad"));
       $(imgSave).css("border", "5px solid white");
-      $(imgSave).addClass("imageAMR");
       $(imgSave).load(onLoadImage);
       $(imgSave).error(onErrorImage);
       getMirrorScript().getImageFromPageAndWrite($(this).data("urlToLoad"), imgSave, document, window.location.href);
