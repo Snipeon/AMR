@@ -466,7 +466,6 @@ function getMirrors(callback) {
 //Instantiate a returned mirror and load the script...
 function loadJSFromRepositoryForMirrors(list, pos, input) {
   "use strict";
-
   var docache = true;
   if (input.jsCode.indexOf(".php") !== -1) {
     docache = false;
@@ -520,6 +519,9 @@ function waitForFinishgetMirrors(mirrors, callback) {
 
 function doesCurrentPageMatchManga(url, activatedMirrors, callback) {
   "use strict";
+  if (url.indexOf('https://www.mangahere.co/' != -1)) {
+    url = url.replace('https://www.mangahere.co/', 'http://www.mangahere.co/')
+  }
   getMirrorsDescription(function (list) {
     var wsloc = list,
       isok = false,

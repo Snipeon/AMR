@@ -50,6 +50,13 @@ function removeBanner() {
   });
 }
 
+function preppendHttp(url) {
+  if (url.indexOf('http') == -1) {
+    return 'https:' + url;
+  }
+  return url;
+}
+
 function initPage() {
   //console.log("initPage");
   if (getMirrorScript().isCurrentPageAChapterPage(document, window.location.href)) {
@@ -73,6 +80,8 @@ function initPage() {
         }
 
         getMirrorScript().getInformationsFromCurrentPage(document, window.location.href, function(res) {
+          res.currentChapterURL = preppendHttp(res.currentChapterURL);
+          res.currentMangaURL = preppendHttp(res.currentMangaURL);
           jQuery.data(document.body, "curpageinformations", res);
           //console.log(res);
           //console.log(jQuery.data(document.body, "curpageinformations"));

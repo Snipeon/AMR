@@ -22,8 +22,18 @@ var mangas;
 var parameters;
 var bookmarks;
 
+function preppendHttp(url) {
+  if (url.indexOf('http') == -1) {
+    return 'https:' + url;
+  }
+  return url;
+}
+
 function openTab(urlToOpen) {
   "use strict";
+  if (urlToOpen.indexOf('http') == -1 && urlToOpen.indexOf('popup.html') == -1) {
+    urlToOpen = 'https:' + urlToOpen;
+  }
   chrome.runtime.sendMessage({
     action : "opentab",
     url : urlToOpen
@@ -68,7 +78,7 @@ function isNew(mg) {
   var ret = false;
   if (mg.read === 0) {
     if (mg.listChaps.length > 0) {
-      if (mg.listChaps[0][1] !== mg.lastChapterReadURL) {
+      if (preppendHttp(mg.listChaps[0][1]) !== mg.lastChapterReadURL) {
         ret = true;
       }
     }
@@ -409,7 +419,7 @@ function fillChapters(mg, sel) {
       }
       $.each(mg.listChaps, function (index, val) {
         var tmp = opt.clone().val(val[1]).text(val[0]);
-        if (val[1].trim() === mg.lastChapterReadURL.trim()) {
+        if (preppendHttp(val[1]).trim() === mg.lastChapterReadURL.trim()) {
           tmp.attr("selected", "selected");
         }
         tmp.appendTo(sel);
@@ -974,7 +984,7 @@ function setData(elt, mg) {
   elt.data("mgmirror", mg.mirror);
   elt.data("mgplay", mg.lastChapterReadURL);
   if (mg.listChaps.length > 0) {
-    elt.data("mglatesturl", mg.listChaps[0][1]);
+    elt.data("mglatesturl", preppendHttp(mg.listChaps[0][1]));
     elt.data("mglatestname", mg.listChaps[0][0]);
   } else {
     elt.data("mglatesturl", "");
