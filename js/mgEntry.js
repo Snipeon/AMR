@@ -23,7 +23,7 @@ var amrc_repository_backup = "https://raw.github.com/AllMangasReader-dev/mirrors
 /*** LOCAL LOADING ***/
 //To enable local loading, you must add "'unsafe-eval'" to "content_security_policy" in the manifest.json. This is not enabled by default due to security reasons.
 //How to use: Put mirror file in js/mirrors/, add filename (without ext) to localMirrors. Reload extension.
-var localMirrors = [];
+var localMirrors = ["MangaHere"];
 
 //##############################################################################
 // Load websites description and code in one array. Do first load if necessary.
@@ -466,6 +466,7 @@ function getMirrors(callback) {
 //Instantiate a returned mirror and load the script...
 function loadJSFromRepositoryForMirrors(list, pos, input) {
   "use strict";
+
   var docache = true;
   if (input.jsCode.indexOf(".php") !== -1) {
     docache = false;

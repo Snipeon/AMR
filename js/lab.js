@@ -281,6 +281,7 @@ function testListMgs() {
 function testChapters() {
   resetAfter("listmgs");
   addResult("listchaps", "L", "Test if list of chapters can be loaded for the selected manga.", $("<span>Loading...</span>"), "");
+
   getMangaMirror($("#mirrorList").val()).getListChaps($("#lstMangas").val(), $("#lstMangas option:selected").text(), null, function(lst, obj) {
     var res = $("<div></div>");
     var isOk = true;
