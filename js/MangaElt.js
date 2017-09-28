@@ -175,7 +175,6 @@ function MangaElt(obj) {
                 notification;
               obj.listChaps = lst;
               newLastChap = obj.listChaps[0][1];
-              oldLastChap = oldLastChap == undefined ? oldLastChap : oldLastChap
               // if oldLastChap === undefined --> new manga added --> no notifications (Issue #40)
               if ((newLastChap !== oldLastChap) && (oldLastChap !== undefined)) {
                 if (obj.read === 0 && (parameters.shownotifications === 1)) {
