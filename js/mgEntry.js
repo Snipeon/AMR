@@ -528,6 +528,9 @@ function doesCurrentPageMatchManga(url, activatedMirrors, callback) {
   if (url.indexOf('https://www.mangahere.co/' != -1)) {
     url = url.replace('https://www.mangahere.co/', 'http://www.mangahere.co/')
   }
+  if (url.indexOf('https://mangafox.me/' != -1)) {
+    url = url.replace('https://mangafox.me/', 'http://mangafox.me/')
+  }
   getMirrorsDescription(function (list) {
     var wsloc = list,
       isok = false,
