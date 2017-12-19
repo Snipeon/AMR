@@ -63,10 +63,16 @@ function getMirrorsDescription(callback) {
         }
         if($.inArray(websites[i].objectName, localMirrors) !== -1) {
           websites[i].jsCode = chrome.extension.getURL('js/mirrors/' + websites[i].objectName + '.js');
+          websites[i].mirrorUrl = "http://www.mangahere.cc"
+          websites[i].webSites = ["http://www.mangahere.cc/*"]
           console.log('Injected local js: '+'js/mirrors/' + websites[i].objectName + '.js');
         }
         else if($.inArray(websites[i].objectName, githubMirrors) !== -1) {
           websites[i].jsCode = github_repository + websites[i].objectName + '.js';
+          if (websites[i].mirrorName === "Manga Here") {
+            websites[i].mirrorUrl = "http://www.mangahere.cc"
+            websites[i].webSites = ["http://www.mangahere.cc/*"]
+          }
         }
       }
       if (!mustUpdate) {
@@ -525,12 +531,6 @@ function waitForFinishgetMirrors(mirrors, callback) {
 
 function doesCurrentPageMatchManga(url, activatedMirrors, callback) {
   "use strict";
-  if (url.indexOf('https://www.mangahere.co/' != -1)) {
-    url = url.replace('https://www.mangahere.co/', 'http://www.mangahere.co/')
-  }
-  if (url.indexOf('https://mangafox.me/' != -1)) {
-    url = url.replace('https://mangafox.me/', 'http://mangafox.me/')
-  }
   getMirrorsDescription(function (list) {
     var wsloc = list,
       isok = false,
