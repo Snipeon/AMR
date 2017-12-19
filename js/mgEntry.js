@@ -1,4 +1,4 @@
-﻿/**
+/**
 
   This file is part of All Mangas Reader.
 
@@ -19,7 +19,7 @@
 var amrc_repository        = "https://community.allmangasreader.com/latest_v2/";
 var amrc_root              = "https://community.allmangasreader.com/latest_v2/";
 var amrc_repository_backup = "https://raw.github.com/AllMangasReader-dev/mirrors/master/";
-var github_repository      = 'https://rawgit.com/twluo/mirrors/master/';
+var github_repository      = 'https://rawgit.com/Snipeon/mirrors/master/';
 
 /*** LOCAL LOADING ***/
 //To enable local loading, you must add "'unsafe-eval'" to "content_security_policy" in the manifest.json. This is not enabled by default due to security reasons.
@@ -63,8 +63,8 @@ function getMirrorsDescription(callback) {
         }
         if($.inArray(websites[i].objectName, localMirrors) !== -1) {
           websites[i].jsCode = chrome.extension.getURL('js/mirrors/' + websites[i].objectName + '.js');
-          websites[i].mirrorUrl = "http://www.mangahere.cc"
-          websites[i].webSites = ["http://www.mangahere.cc/*"]
+          /*websites[i].mirrorUrl = "http://www.mangahere.cc"
+          websites[i].webSites = ["http://www.mangahere.cc/*"]*/
           console.log('Injected local js: '+'js/mirrors/' + websites[i].objectName + '.js');
         }
         else if($.inArray(websites[i].objectName, githubMirrors) !== -1) {
@@ -73,6 +73,10 @@ function getMirrorsDescription(callback) {
             websites[i].mirrorUrl = "http://www.mangahere.cc"
             websites[i].webSites = ["http://www.mangahere.cc/*"]
           }
+		  else if (websites[i].mirrorName === "Manga-Fox") {
+            websites[i].mirrorUrl = "http://www.mangafox.la"
+            websites[i].webSites = ["http://www.mangafox.la/*"]
+		  }
         }
       }
       if (!mustUpdate) {
