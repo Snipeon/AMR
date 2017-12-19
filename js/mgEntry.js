@@ -69,14 +69,16 @@ function getMirrorsDescription(callback) {
         }
         else if($.inArray(websites[i].objectName, githubMirrors) !== -1) {
           websites[i].jsCode = github_repository + websites[i].objectName + '.js';
-          if (websites[i].mirrorName === "Manga Here") {
+          if (websites[i].mirrorName === "Manga Here") 
+	  {
             websites[i].mirrorUrl = "http://www.mangahere.cc"
             websites[i].webSites = ["http://www.mangahere.cc/*"]
-          }
-		  else if (websites[i].mirrorName === "Manga-Fox") {
+          } 
+	  else if (websites[i].mirrorName === "Manga-Fox") 
+	  {
             websites[i].mirrorUrl = "http://www.mangafox.la"
             websites[i].webSites = ["http://www.mangafox.la/*"]
-		  }
+	  }
         }
       }
       if (!mustUpdate) {
