@@ -88,10 +88,10 @@ function getMirrorsDescription(callback)
 						websites[i].mirrorUrl = "http://www.mangahere.cc"
 						websites[i].webSites = ["http://www.mangahere.cc/*"]
 					} 
-					else if (websites[i].mirrorName === "Manga-Fox") 
+					if (websites[i].mirrorName === "Manga-Fox") 
 					{
-						websites[i].mirrorUrl = "http://www.mangafox.la"
-						websites[i].webSites = ["http://www.mangafox.la/*"]
+						websites[i].mirrorUrl = "http://mangafox.la"
+						websites[i].webSites = ["http://mangafox.la/*"]
 					}
 				}
 			}
