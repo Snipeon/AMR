@@ -90,8 +90,8 @@ function getMirrorsDescription(callback)
 					} 
 					if (websites[i].mirrorName === "Manga-Fox") 
 					{
-						websites[i].mirrorUrl = "http://mangafox.la"
-						websites[i].webSites = ["http://mangafox.la/*"]
+						websites[i].mirrorUrl = "http://fanfox.net"
+						websites[i].webSites = ["http://fanfox.net/*"]
 					}
 				}
 			}
