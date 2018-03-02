@@ -73,11 +73,10 @@ function getMirrorsDescription(callback) {
             websites[i].mirrorUrl = "http://www.mangahere.cc"
             websites[i].webSites = ["http://www.mangahere.cc/*"]
           }
-          if (websites[i].mirrorName === "Manga Reader") 
-					{
-						websites[i].mirrorUrl = "https://www.mangareader.net"
-						websites[i].webSites = ["https://www.mangareader.net/*"]
-					}
+          if (websites[i].mirrorName === "Manga Reader") {
+	    websites[i].mirrorUrl = "https://www.mangareader.net"
+	    websites[i].webSites = ["https://www.mangareader.net/*"]
+	  }
         }
       }
       if (!mustUpdate) {
