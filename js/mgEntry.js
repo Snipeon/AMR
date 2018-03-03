@@ -26,7 +26,7 @@ var github_repository      = 'https://rawgit.com/Snipeon/mirrors/master/';
 //To enable local loading, you must add "'unsafe-eval'" to "content_security_policy" in the manifest.json. This is not enabled by default due to security reasons.
 //How to use: Put mirror file in js/mirrors/, add filename (without ext) to localMirrors. Reload extension.
 var localMirrors = [];
-var githubMirrors = ["MangaHere", "MangaFox"];
+var githubMirrors = ["MangaHere", "MangaFox", "Manga Reader"];
 
 //##############################################################################
 // Load websites description and code in one array. Do first load if necessary.
@@ -92,6 +92,11 @@ function getMirrorsDescription(callback)
 					{
 						websites[i].mirrorUrl = "http://fanfox.net"
 						websites[i].webSites = ["http://fanfox.net/*"]
+					}
+					if (websites[i].mirrorName === "Manga Reader") 
+					{
+						websites[i].mirrorUrl = "https://www.mangareader.net"
+						websites[i].webSites = ["https://www.mangareader.net/*"]
 					}
 				}
 			}
